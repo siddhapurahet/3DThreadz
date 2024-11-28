@@ -1,6 +1,6 @@
 import React from "react";
-
 import CustomButton from "./CustomButton";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const AIPicker = ({ prompt, setPrompt, generatingImg, handleSubmit }) => {
   return (
@@ -10,8 +10,13 @@ const AIPicker = ({ prompt, setPrompt, generatingImg, handleSubmit }) => {
         rows={5}
         value={prompt}
         onChange={(e) => setPrompt(e.target.value)}
-        className="aipicker-textarea"
+        className="aipicker-textarea w-full pr-8"
       />
+      {/* <FontAwesomeIcon
+        icon="fa-solid fa-circle-exclamation"
+        className="absolute top-2 right-2 text-red-500 text-sm"
+      /> */}
+
       <div className="flex flex-wrap gap-3">
         {generatingImg ? (
           <CustomButton
