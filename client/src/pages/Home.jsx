@@ -21,7 +21,7 @@ const Home = () => {
             <img
               src="/threejs.png"
               alt="logo"
-              className="w-8 h-8 object-contain"
+              className="w-18 h-12 object-contain"
             />
           </motion.header>
 
@@ -31,10 +31,10 @@ const Home = () => {
             </h1>
           </motion.div>
           <motion.div {...headContentAnimation} className="flex flex-col gap-5">
-            <p className="max-w-md font-normal text-gray-600 text-base">
-              Make your vibrant style with our new 3D tool for customization.
-              <strong>Unleash your fashion style</strong> and rock with your
-              style
+            <p className="max-w-md font-normal text-white text-base">
+              Make your vibrant✨ style🎨 with our new 3D tool👓 for
+              customization. Unleash your fashion style💥 and rock with your
+              it🎇🎇
             </p>
             <CustomButton
               type="filled"
