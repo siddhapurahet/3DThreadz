@@ -46,7 +46,7 @@ const CustomButton = ({ type, title, CustomStyles, handleClick }) => {
       {/* Conditionally render the tooltip directly within the button */}
       {showTooltip && (title === "AI Full" || title === "AI Logo") && (
         <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-x-20 text-sm bg-gray-800 text-white rounded px-4 py-3">
-          "If on pressing the button🤔, the below error generates in your
+          👉If on pressing the button🤔, the below error generates in your
           terminal that is because your OpenAI api Key has reached its
           limitation. Either go with payment method of OpenAI or try with new
           api

@@ -18,7 +18,7 @@ import {
 
 const Customizer = () => {
   const snap = useSnapshot(state);
-
+  const [hoveredTab, setHoveredTab] = useState(null); // Track the hovered tab name
   const [file, setFile] = useState("");
 
   const [prompt, setPrompt] = useState("");
@@ -27,6 +27,10 @@ const Customizer = () => {
   const [activeEditorTab, setActiveEditorTab] = useState("");
   const [activeFilterTab, setActiveFilterTab] = useState({
     logoShirt: true,
+    stylishShirt: false,
+  });
+  const [activeFilterTab2, setActiveFilterTab2] = useState({
+    logoShirt: false,
     stylishShirt: false,
   });
 
@@ -119,6 +123,16 @@ const Customizer = () => {
     });
   };
 
+  // Function to handle hover and show the tooltip
+  const handleHover = (name) => {
+    setHoveredTab(name); // Set the hovered tab
+  };
+
+  // Function to hide tooltip when mouse leaves
+  const handleLeave = () => {
+    setHoveredTab(null); // Clear the hovered tab
+  };
+
   return (
     <AnimatePresence>
       {!snap.intro && (
@@ -160,13 +174,27 @@ const Customizer = () => {
             {...slideAnimation("up")}
           >
             {FilterTabs.map((tab) => (
-              <Tab
+              <div
                 key={tab.name}
-                tab={tab}
-                isFilterTab
-                isActiveTab={activeFilterTab[tab.name]}
-                handleClick={() => handleActiveFilterTab(tab.name)}
-              />
+                className="relative"
+                onMouseEnter={() => handleHover(tab.name)}
+                onMouseLeave={handleLeave}
+              >
+                <Tab
+                  key={tab.name}
+                  tab={tab}
+                  isFilterTab
+                  isActiveTab={activeFilterTab[tab.name]}
+                  handleClick={() => handleActiveFilterTab(tab.name)}
+                />
+                {hoveredTab === tab.name && (
+                  <span className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-full mb-2 text-sm text-white rounded w-64 px-6 py-1.5">
+                    {tab.name === "logoShirt"
+                      ? "🔄Toggle the button to try out whether the logo☯ suits the t-shirt or not"
+                      : "🔄Toggle the button to try logo☯ as the entire t-shirt design✨"}
+                  </span>
+                )}
+              </div>
             ))}
           </motion.div>
         </>
