@@ -34,6 +34,21 @@ const Customizer = () => {
     stylishShirt: false,
   });
 
+  const handleDownload = () => {
+    const canvas = document.querySelector("canvas"); // Get the canvas element
+    if (canvas) {
+      const dataURL = canvas.toDataURL("image/png");
+      const link = document.createElement("a");
+      link.href = dataURL;
+      link.download = "canvas_model.png"; // Filename for the download
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } else {
+      alert("Canvas not found!");
+    }
+  };
+
   // show tab content depending on the activeTab
   const generateTabContent = () => {
     switch (activeEditorTab) {
@@ -158,12 +173,19 @@ const Customizer = () => {
           </motion.div>
 
           <motion.div
-            className="absolute z-10 top-5 right-5"
+            className="absolute z-10 top-5 right-5 flex gap-4 items-center"
             {...fadeAnimation}
           >
             <CustomButton
               type="filled"
-              title="Go Back"
+              title="⏏Save"
+              handleClick={handleDownload}
+              customStyles="w-fit px-4 py-2.5 font-bold text-sm"
+            />
+
+            <CustomButton
+              type="filled"
+              title="⇐Back"
               handleClick={() => (state.intro = true)}
               customStyles="w-fit px-4 py-2.5 font-bold text-sm"
             />

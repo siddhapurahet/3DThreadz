@@ -1,11 +1,14 @@
 import { Canvas } from "@react-three/fiber";
 import { Environment, Center } from "@react-three/drei";
+import { useRef } from "react";
 
 import Shirt from "./Shirt";
 import Backdrop from "./Backdrop";
 import CameraPos from "./CameraPos";
 
 const CanvasModel = () => {
+  const canvasRef = useRef();
+
   return (
     <Canvas
       shadows
